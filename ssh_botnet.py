@@ -63,3 +63,4 @@ def addClient(host, user, password, port=22):
 if __name__ == '__main__':
     addClient("127.0.0.1", "osboxes", "osboxes.org")
     #sshbotnetCommand("ls")
+    
