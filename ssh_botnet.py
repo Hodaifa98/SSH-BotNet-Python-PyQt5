@@ -1,6 +1,9 @@
 #Import required modules.
 #from pexpect import pxsshS
+import sys
 import PyQt5
+from PyQt5 import QtCore, QtGui, QtWidgets
+from Design import ssh_window
 
 botNet = []
 
@@ -61,6 +64,11 @@ def addClient(host, user, password, port=22):
 
 #
 if __name__ == '__main__':
-    addClient("127.0.0.1", "osboxes", "osboxes.org")
+    #addClient("127.0.0.1", "osboxes", "osboxes.org")
     #sshbotnetCommand("ls")
-    
+    app = QtWidgets.QApplication(sys.argv)
+    SSHBotNetWindow = QtWidgets.QMainWindow()
+    ui = ssh_window.Ui_SSHBotNetWindow()
+    ui.setupUi(SSHBotNetWindow)
+    SSHBotNetWindow.show()
+    sys.exit(app.exec_())
