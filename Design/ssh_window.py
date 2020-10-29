@@ -100,11 +100,11 @@ class Ui_SSHBotNetWindow(object):
         self.exitMenuItem.setText(_translate("SSHBotNetWindow", "Exit"))
 
 
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    SSHBotNetWindow = QtWidgets.QMainWindow()
-    ui = Ui_SSHBotNetWindow()
-    ui.setupUi(SSHBotNetWindow)
-    SSHBotNetWindow.show()
-    sys.exit(app.exec_())
+#if __name__ == "__main__":
+    #import sys
+    #app = QtWidgets.QApplication(sys.argv)
+    #SSHBotNetWindow = QtWidgets.QMainWindow()
+    #ui = Ui_SSHBotNetWindow()
+    #ui.setupUi(SSHBotNetWindow)
+    #SSHBotNetWindow.show()
+    #sys.exit(app.exec_())
