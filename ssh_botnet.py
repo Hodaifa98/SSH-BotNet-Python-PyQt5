@@ -31,9 +31,13 @@ class Client:
 
     #
     def send_command(self, command):
-        stdin, stdout, stderr = self.session.exec_command(command)
-        return stdout.readlines()
-        #print(stderr.readlines())
+        try:
+            stdin, stdout, stderr = self.session.exec_command(command)
+            #print(stderr.readlines())
+            return stdout.readlines()
+        except Exception as ex:
+            print("Error executing commands...")
+            print(ex)
 
 
 def addClient(host, username, password, port=22):
