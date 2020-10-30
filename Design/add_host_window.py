@@ -1,18 +1,23 @@
 #Import required modules.
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+from Design.ssh_window import Ui_SSHBotNetWindow
 
 class Ui_AddHostWindow(object):
+    add = ""
     def cancelAddHost(self):
-        pass
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_SSHBotNetWindow()
+        self.ui.setupUi(self.window)
+        self.window.show()
+        add.close()
 
     def setupUi(self, AddHostWindow):
         AddHostWindow.setObjectName("AddHostWindow")
         AddHostWindow.resize(350, 215)
         AddHostWindow.setMinimumSize(QtCore.QSize(350, 215))
         AddHostWindow.setMaximumSize(QtCore.QSize(350, 215))
-        AddHostWindow.close()
+        add = AddHostWindow
         self.addHostWidget = QtWidgets.QWidget(AddHostWindow)
         self.addHostWidget.setObjectName("addHostWidget")
         self.formLayoutWidget = QtWidgets.QWidget(self.addHostWidget)
