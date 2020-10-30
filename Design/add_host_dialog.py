@@ -1,5 +1,11 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+class HostObject:
+    def __init__(self, host, username, password, port):
+        self.host = host
+        self.username = username
+        self.password = password
+        self.port = port
 
 class Ui_addHostDialog(object):
     def setupUi(self, addHostDialog):
