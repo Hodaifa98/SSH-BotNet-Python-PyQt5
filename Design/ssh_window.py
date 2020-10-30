@@ -5,10 +5,10 @@ from Design.add_host_window import Ui_AddHostWindow
 
 class Ui_SSHBotNetWindow(object):
     def openAddHostWindow(self):
-        self.window = QtWidgets.QMainWindow()
-        self.ui = Ui_AddHostWindow()
-        self.ui.setupUi(self.window)
-        self.window.show()
+        window = QtWidgets.QMainWindow()
+        ui = Ui_AddHostWindow()
+        ui.setupUi(window)
+        window.show()
 
     def setupUi(self, SSHBotNetWindow):
         SSHBotNetWindow.setObjectName("SSHBotNetWindow")

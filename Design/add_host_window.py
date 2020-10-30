@@ -19,9 +19,11 @@ class Ui_AddHostWindow(object):
             username = self.usernameInput.text()
             password = self.passwordInput.text()
             port = self.portInput.text()
-            print(host, username, password, port)
+            hostObj = HostObject(host, username, password, port)
+            self.cancelBtn.click()
         except Exception as ex:
             print(ex)
+
     def setupUi(self, AddHostWindow):
         AddHostWindow.setObjectName("AddHostWindow")
         AddHostWindow.resize(350, 215)
