@@ -1,7 +1,6 @@
 #Import required modules.
 #from pexpect import pxsshS
 import sys
-import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 from Design.add_host_dialog import Ui_addHostDialog
 
@@ -90,7 +89,6 @@ class Ui_SSHBotNetWindow(object):
         self.fileMenu.addAction(self.exportHostsMenuItem)
         self.menuBar.addAction(self.menuMenu.menuAction())
         self.menuBar.addAction(self.fileMenu.menuAction())
-
         self.retranslateUi(SSHBotNetWindow)
         QtCore.QMetaObject.connectSlotsByName(SSHBotNetWindow)
 
