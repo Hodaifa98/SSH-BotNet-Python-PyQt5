@@ -64,11 +64,11 @@ class Ui_addHostDialog(object):
         self.portLabel.setText(_translate("addHostDialog", "Port"))
 
 
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    addHostDialog = QtWidgets.QDialog()
-    ui = Ui_addHostDialog()
-    ui.setupUi(addHostDialog)
-    addHostDialog.show()
-    sys.exit(app.exec_())
+#if __name__ == "__main__":
+    #import sys
+    #app = QtWidgets.QApplication(sys.argv)
+    #addHostDialog = QtWidgets.QDialog()
+    #ui = Ui_addHostDialog()
+    #ui.setupUi(addHostDialog)
+    #addHostDialog.show()
+    #sys.exit(app.exec_())
