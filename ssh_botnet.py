@@ -56,6 +56,10 @@ class Ui_SSHBotNetWindow(object):
             hostObj = dialog.ui.getHostObj()
             addClient(hostObj.host, hostObj.username, hostObj.password, hostObj.port)
 
+    def executeCommand(self):
+        #sshbotnetCommand(self.commandTextInput.text())
+        print(self.commandTextInput.text())
+
     def setupUi(self, SSHBotNetWindow):
         SSHBotNetWindow.setObjectName("SSHBotNetWindow")
         SSHBotNetWindow.resize(520, 350)
@@ -83,7 +87,7 @@ class Ui_SSHBotNetWindow(object):
         self.addHostBtn.setGeometry(QtCore.QRect(10, 220, 91, 23))
         self.addHostBtn.setStyleSheet("background-color: rgb(204, 246, 200);")
         self.addHostBtn.setObjectName("addHostBtn")
-        #Click event for addHostBtn
+        #Click event for addHostBtn.
         self.addHostBtn.clicked.connect(self.openAddHostDialog)
         self.removeHostBtn = QtWidgets.QPushButton(self.hostsWidget)
         self.removeHostBtn.setGeometry(QtCore.QRect(10, 260, 91, 41))
@@ -93,6 +97,8 @@ class Ui_SSHBotNetWindow(object):
         self.executeBtn.setGeometry(QtCore.QRect(440, 260, 75, 23))
         self.executeBtn.setStyleSheet("background-color: rgb(0, 106, 113);\ncolor: rgb(255, 255, 255);")
         self.executeBtn.setObjectName("executeBtn")
+        #Click event for executeBtn.
+        self.executeBtn.clicked.connect(self.executeCommand)
         self.cmdToExecuteLabel = QtWidgets.QLabel(self.hostsWidget)
         self.cmdToExecuteLabel.setGeometry(QtCore.QRect(110, 230, 101, 71))
         font = QtGui.QFont()
