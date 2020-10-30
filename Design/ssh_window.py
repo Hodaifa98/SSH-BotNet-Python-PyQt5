@@ -9,7 +9,9 @@ class Ui_SSHBotNetWindow(object):
         dialog.ui = Ui_addHostDialog()
         dialog.ui.setupUi(dialog)
         dialog.exec_()
-        dialog.show()
+        if dialog.result() == dialog.Accepted:
+            hostObj = dialog.ui.getHostObj()
+            print(hostObj.__dict__)
 
     def setupUi(self, SSHBotNetWindow):
         SSHBotNetWindow.setObjectName("SSHBotNetWindow")

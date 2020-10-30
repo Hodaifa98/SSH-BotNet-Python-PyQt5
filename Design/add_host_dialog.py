@@ -9,14 +9,15 @@ class HostObject:
         self.port = port
 
 class Ui_addHostDialog(object):
+    def getHostObj(self):
+        return self.hostObj
     def addHostBtnClick(self):
         try:
             host = self.hostInput.text()
             username = self.usernameInput.text()
             password = self.passwordInput.text()
             port = self.portInput.text()
-            hostObj = HostObject(host, username, password, port)
-            self.cancelBtn.click()
+            self.hostObj = HostObject(host, username, password, port)
         except Exception as ex:
             print(ex)
 
@@ -31,6 +32,8 @@ class Ui_addHostDialog(object):
         self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
         self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
         self.buttonBox.setObjectName("buttonBox")
+        #Add click event to OK button.
+        self.buttonBox.clicked.connect(self.addHostBtnClick)
         self.formLayoutWidget = QtWidgets.QWidget(addHostDialog)
         self.formLayoutWidget.setGeometry(QtCore.QRect(10, 10, 331, 119))
         self.formLayoutWidget.setObjectName("formLayoutWidget")
@@ -67,7 +70,6 @@ class Ui_addHostDialog(object):
         self.hostInput = QtWidgets.QLineEdit(self.formLayoutWidget)
         self.hostInput.setObjectName("hostInput")
         self.addHostForm.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.hostInput)
-
         self.retranslateUi(addHostDialog)
         self.buttonBox.accepted.connect(addHostDialog.accept)
         self.buttonBox.rejected.connect(addHostDialog.reject)
