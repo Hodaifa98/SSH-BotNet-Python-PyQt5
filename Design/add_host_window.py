@@ -3,6 +3,8 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Ui_AddHostWindow(object):
+    def cancelAddHost(self):
+        self.close()
     def setupUi(self, AddHostWindow):
         AddHostWindow.setObjectName("AddHostWindow")
         AddHostWindow.resize(350, 215)
@@ -55,6 +57,8 @@ class Ui_AddHostWindow(object):
         self.cancelBtn.setStyleSheet("background-color: rgb(213, 64, 98);\n"
 "color: rgb(255, 255, 255);")
         self.cancelBtn.setObjectName("cancelBtn")
+        #Click event for cancelBtn.
+        self.cancelBtn.clicked.connect(self.cancelAddHost)
         AddHostWindow.setCentralWidget(self.addHostWidget)
 
         self.retranslateUi(AddHostWindow)
