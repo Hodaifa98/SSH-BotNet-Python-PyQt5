@@ -57,8 +57,8 @@ class Ui_SSHBotNetWindow(object):
             addClient(hostObj.host, hostObj.username, hostObj.password, hostObj.port)
 
     def executeCommand(self):
-        #sshbotnetCommand(self.commandTextInput.text())
-        print(self.commandTextInput.text())
+        #sshbotnetCommand(self.commandTextInput.toPlainText())
+        print(self.commandTextInput.toPlainText())
 
     def setupUi(self, SSHBotNetWindow):
         SSHBotNetWindow.setObjectName("SSHBotNetWindow")
