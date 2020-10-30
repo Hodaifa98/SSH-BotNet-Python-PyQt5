@@ -1,8 +1,14 @@
 #Import required modules.
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+from Design.add_host_window import Ui_AddHostWindow
 
 class Ui_SSHBotNetWindow(object):
+    def openAddHostWindow(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_AddHostWindow()
+        self.ui.setupUi(self.window)
+        self.window.show()
+
     def setupUi(self, SSHBotNetWindow):
         SSHBotNetWindow.setObjectName("SSHBotNetWindow")
         SSHBotNetWindow.resize(520, 350)
@@ -30,6 +36,7 @@ class Ui_SSHBotNetWindow(object):
         self.addHostBtn.setGeometry(QtCore.QRect(10, 220, 91, 23))
         self.addHostBtn.setStyleSheet("background-color: rgb(204, 246, 200);")
         self.addHostBtn.setObjectName("addHostBtn")
+        self.addHostBtn.click(self.openAddHostWindow)
         self.removeHostBtn = QtWidgets.QPushButton(self.hostsWidget)
         self.removeHostBtn.setGeometry(QtCore.QRect(10, 260, 91, 41))
         self.removeHostBtn.setStyleSheet("background-color: rgb(213, 64, 98);\n"
