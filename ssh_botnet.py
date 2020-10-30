@@ -1,6 +1,7 @@
 #Import required modules.
-#from pexpect import pxssh
 import sys
+import paramiko
+from paramiko_expect import SSHClientInteraction
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QTableWidgetItem
 from Design.add_host_dialog import Ui_addHostDialog
@@ -20,9 +21,11 @@ class Client:
     #
     def connect(self):
         try:
-            s = pxssh.pxssh()
-            s.login(self.host, self.username, self.password, port=self.port)
-            return s
+            client = paramiko.SSHClient()
+            client.load_system_host_keys()
+            client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+            client.connect(hostname=self.host, username=self.username, password=self.password, port=self.port)
+            return client
         except Exception as ex:
             print("Error connecting...")
             print(ex)
@@ -30,9 +33,9 @@ class Client:
     #
     def send_command(self, command):
         try:
-            self.session.sendline(command)
-            self.session.prompt()
-            return self.session.before
+            interact = SSHClientInteraction(self.session, timeout=10, display=True)
+            interact.send(command)
+            return interact.current_output
         except Exception as ex:
             print(ex)
 
