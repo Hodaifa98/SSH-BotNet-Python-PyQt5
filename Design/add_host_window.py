@@ -1,23 +1,21 @@
 #Import required modules.
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
-from Design.ssh_window import Ui_SSHBotNetWindow
 
 class Ui_AddHostWindow(object):
-    add = ""
-    def cancelAddHost(self):
-        self.window = QtWidgets.QMainWindow()
-        self.ui = Ui_SSHBotNetWindow()
-        self.ui.setupUi(self.window)
-        self.window.show()
-        add.close()
+    def cancelBtnClick(self, window):
+        window.close()
 
+    def addHostBtnClick(self):
+        try:
+            print(self.hostInput.text())
+        except Exception as ex:
+            print(ex)
     def setupUi(self, AddHostWindow):
         AddHostWindow.setObjectName("AddHostWindow")
         AddHostWindow.resize(350, 215)
         AddHostWindow.setMinimumSize(QtCore.QSize(350, 215))
         AddHostWindow.setMaximumSize(QtCore.QSize(350, 215))
-        add = AddHostWindow
         self.addHostWidget = QtWidgets.QWidget(AddHostWindow)
         self.addHostWidget.setObjectName("addHostWidget")
         self.formLayoutWidget = QtWidgets.QWidget(self.addHostWidget)
@@ -60,13 +58,16 @@ class Ui_AddHostWindow(object):
         self.addHostBtn.setGeometry(QtCore.QRect(140, 150, 75, 23))
         self.addHostBtn.setStyleSheet("background-color: rgb(204, 246, 200);")
         self.addHostBtn.setObjectName("addHostBtn")
+        #Click event for addHostBtn.
+        self.addHostBtn.clicked.connect(self.addHostBtnClick)
         self.cancelBtn = QtWidgets.QPushButton(self.addHostWidget)
         self.cancelBtn.setGeometry(QtCore.QRect(140, 180, 75, 23))
         self.cancelBtn.setStyleSheet("background-color: rgb(213, 64, 98);\n"
 "color: rgb(255, 255, 255);")
         self.cancelBtn.setObjectName("cancelBtn")
         #Click event for cancelBtn.
-        self.cancelBtn.clicked.connect(self.cancelAddHost)
+        #self.cancelBtn.clicked.connect(AddHostWindow.close)
+        self.cancelBtn.clicked.connect(lambda: self.cancelBtnClick(AddHostWindow))
         AddHostWindow.setCentralWidget(self.addHostWidget)
         self.retranslateUi(AddHostWindow)
         QtCore.QMetaObject.connectSlotsByName(AddHostWindow)
