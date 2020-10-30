@@ -36,7 +36,8 @@ class Ui_SSHBotNetWindow(object):
         self.addHostBtn.setGeometry(QtCore.QRect(10, 220, 91, 23))
         self.addHostBtn.setStyleSheet("background-color: rgb(204, 246, 200);")
         self.addHostBtn.setObjectName("addHostBtn")
-        self.addHostBtn.click(self.openAddHostWindow)
+        #Click event for addHostBtn
+        self.addHostBtn.clicked.connect = self.openAddHostWindow
         self.removeHostBtn = QtWidgets.QPushButton(self.hostsWidget)
         self.removeHostBtn.setGeometry(QtCore.QRect(10, 260, 91, 41))
         self.removeHostBtn.setStyleSheet("background-color: rgb(213, 64, 98);\n"
