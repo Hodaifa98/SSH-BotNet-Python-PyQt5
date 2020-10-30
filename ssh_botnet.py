@@ -47,6 +47,14 @@ def sshbotnetCommand(self, command):
         print(output)
 
 class Ui_SSHBotNetWindow(object):
+    def addHostToListAndRow(self, hostObj):
+        addClient(hostObj.host, hostObj.username, hostObj.password, hostObj.port)
+        rowPosition = self.hostsTable.rowCount()
+        self.hostsTable.insertRow(rowPosition)
+        self.hostsTable.setItem(rowPosition, 0, hostObj.host)
+        self.hostsTable.setItem(rowPosition, 1, hostObj.username)
+        self.hostsTable.setItem(rowPosition, 2, hostObj.port)
+
     def openAddHostDialog(self):
         dialog = QtWidgets.QDialog()
         dialog.ui = Ui_addHostDialog()
@@ -54,7 +62,7 @@ class Ui_SSHBotNetWindow(object):
         dialog.exec_()
         if dialog.result() == dialog.Accepted:
             hostObj = dialog.ui.getHostObj()
-            addClient(hostObj.host, hostObj.username, hostObj.password, hostObj.port)
+            self.addHostToListAndRow(hostObj)
 
     def executeCommand(self):
         #sshbotnetCommand(self.commandTextInput.toPlainText())
