@@ -37,11 +37,11 @@ class Client:
             print(ex)
 
 
-def addClient(self, host, username, password, port=22):
+def addClient(host, username, password, port=22):
     client = Client(host, username, password, port)
     botNet_clients.append(client)
 
-def sshbotnetCommand(self, command):
+def sshbotnetCommand(command):
     for client in botNet_clients:
         output = client.send_command(command)
         print("Output from " + client.host)
@@ -52,12 +52,9 @@ class Ui_SSHBotNetWindow(object):
         addClient(hostObj.host, hostObj.username, hostObj.password, hostObj.port)
         rowPosition = self.hostsTable.rowCount()
         self.hostsTable.insertRow(rowPosition)
-        hostItem = QTableWidgetItem(hostObj.host)
-        usernameItem = QTableWidgetItem(hostObj.username)
-        portItem = QTableWidgetItem(hostObj.port)
-        self.hostsTable.setItem(rowPosition, 0, hostItem)
-        self.hostsTable.setItem(rowPosition, 1, usernameItem)
-        self.hostsTable.setItem(rowPosition, 2, portItem)
+        self.hostsTable.setItem(rowPosition, 0, QTableWidgetItem(hostObj.host))
+        self.hostsTable.setItem(rowPosition, 1, QTableWidgetItem(hostObj.username))
+        self.hostsTable.setItem(rowPosition, 2, QTableWidgetItem(hostObj.port))
         
 
     def openAddHostDialog(self):
@@ -70,8 +67,7 @@ class Ui_SSHBotNetWindow(object):
             self.addHostToListAndRow(hostObj)
 
     def executeCommand(self):
-        #sshbotnetCommand(self.commandTextInput.toPlainText())
-        print(self.commandTextInput.toPlainText())
+        sshbotnetCommand(self.commandTextInput.toPlainText())
 
     def setupUi(self, SSHBotNetWindow):
         SSHBotNetWindow.setObjectName("SSHBotNetWindow")
@@ -96,6 +92,8 @@ class Ui_SSHBotNetWindow(object):
         self.hostsTable.setHorizontalHeaderItem(1, item)
         item = QtWidgets.QTableWidgetItem()
         self.hostsTable.setHorizontalHeaderItem(2, item)
+        #Disable editing cells.
+        self.hostsTable.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
         self.addHostBtn = QtWidgets.QPushButton(self.hostsWidget)
         self.addHostBtn.setGeometry(QtCore.QRect(10, 220, 91, 23))
         self.addHostBtn.setStyleSheet("background-color: rgb(204, 246, 200);")
