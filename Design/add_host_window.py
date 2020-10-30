@@ -2,13 +2,24 @@
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+class HostObject:
+    def __init__(self, host, username, password, port):
+        self.host = host
+        self.username = username
+        self.password = password
+        self.port = port
+
 class Ui_AddHostWindow(object):
     def cancelBtnClick(self, window):
         window.close()
 
     def addHostBtnClick(self):
         try:
-            print(self.hostInput.text())
+            host = self.hostInput.text()
+            username = self.usernameInput.text()
+            password = self.passwordInput.text()
+            port = self.portInput.text()
+            print(host, username, password, port)
         except Exception as ex:
             print(ex)
     def setupUi(self, AddHostWindow):
