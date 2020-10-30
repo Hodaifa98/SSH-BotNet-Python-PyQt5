@@ -52,9 +52,13 @@ class Ui_SSHBotNetWindow(object):
         addClient(hostObj.host, hostObj.username, hostObj.password, hostObj.port)
         rowPosition = self.hostsTable.rowCount()
         self.hostsTable.insertRow(rowPosition)
-        self.hostsTable.setItem(rowPosition, 0, QTableWidgetItem(hostObj.host))
-        self.hostsTable.setItem(rowPosition, 1, QTableWidgetItem(hostObj.username))
-        self.hostsTable.setItem(rowPosition, 2, QTableWidgetItem(hostObj.port))
+        hostItem = QTableWidgetItem(hostObj.host)
+        usernameItem = QTableWidgetItem(hostObj.username)
+        portItem = QTableWidgetItem(hostObj.port)
+        self.hostsTable.setItem(rowPosition, 0, hostItem)
+        self.hostsTable.setItem(rowPosition, 1, usernameItem)
+        self.hostsTable.setItem(rowPosition, 2, portItem)
+        
 
     def openAddHostDialog(self):
         dialog = QtWidgets.QDialog()
