@@ -1,7 +1,5 @@
 #Import required modules.
-import sys
-from PyQt5 import QtCore, QtGui, QtWidgets
-from Design.add_host_dialog import Ui_addHostDialog
+
 
 class Ui_SSHBotNetWindow(object):
     def openAddHostDialog(self):
