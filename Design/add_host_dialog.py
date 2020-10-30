@@ -9,6 +9,17 @@ class HostObject:
         self.port = port
 
 class Ui_addHostDialog(object):
+    def addHostBtnClick(self):
+        try:
+            host = self.hostInput.text()
+            username = self.usernameInput.text()
+            password = self.passwordInput.text()
+            port = self.portInput.text()
+            hostObj = HostObject(host, username, password, port)
+            self.cancelBtn.click()
+        except Exception as ex:
+            print(ex)
+
     def setupUi(self, addHostDialog):
         addHostDialog.setObjectName("addHostDialog")
         addHostDialog.resize(350, 170)
