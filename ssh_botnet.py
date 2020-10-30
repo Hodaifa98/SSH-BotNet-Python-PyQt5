@@ -7,6 +7,45 @@ from Design.add_host_dialog import Ui_addHostDialog
 #
 botNet_clients = []
 
+class Client:
+    #
+    def __init__(self, host , user, password, port=22):
+        self.host = host
+        self.user = user
+        self.password = password
+        self.port = port
+        self.session = self.connect()
+
+    #
+    def connect(self):
+        try:
+            s = pxssh.pxssh()
+            s.login(self.host, self.user, self.password, port=self.port)
+            return s
+        except Exception as ex:
+            print("Error connecting...")
+            print(ex)
+
+    #
+    def send_command(self, command):
+        try:
+            self.session.sendline(command)
+            self.session.prompt()
+            return self.session.before
+        except Exception as ex:
+            print(ex)
+
+
+def addClient(self, host, user, password, port=22):
+    client = Client(host, user, password, port)
+    botNet_clients.append(client)
+
+def sshbotnetCommand(self, command):
+    for client in botNet_clients:
+        output = client.send_command(command)
+        print("Output from " + client.host)
+        print(output)
+
 class Ui_SSHBotNetWindow(object):
     def openAddHostDialog(self):
         dialog = QtWidgets.QDialog()
@@ -109,46 +148,6 @@ class Ui_SSHBotNetWindow(object):
         self.exportHostsMenuItem.setText(_translate("SSHBotNetWindow", "Export hosts"))
         self.helpMenuItem.setText(_translate("SSHBotNetWindow", "Help"))
         self.exitMenuItem.setText(_translate("SSHBotNetWindow", "Exit"))
-
-
-class Client:
-    #
-    def __init__(self, host , user, password, port=22):
-        self.host = host
-        self.user = user
-        self.password = password
-        self.port = port
-        self.session = self.connect()
-
-    #
-    def connect(self):
-        try:
-            s = pxssh.pxssh()
-            s.login(self.host, self.user, self.password, port=self.port)
-            return s
-        except Exception as ex:
-            print("Error connecting...")
-            print(ex)
-
-    #
-    def send_command(self, command):
-        try:
-            self.session.sendline(command)
-            self.session.prompt()
-            return self.session.before
-        except Exception as ex:
-            print(ex)
-
-
-def addClient(self, host, user, password, port=22):
-    client = Client(host, user, password, port)
-    botNet_clients.append(client)
-
-def sshbotnetCommand(self, command):
-    for client in botNet_clients:
-        output = client.send_command(command)
-        print("Output from " + client.host)
-        print(output)
 
 #
 if __name__ == '__main__':
