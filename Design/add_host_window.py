@@ -1,15 +1,18 @@
 #Import required modules.
+import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Ui_AddHostWindow(object):
     def cancelAddHost(self):
-        self.close()
+        pass
+
     def setupUi(self, AddHostWindow):
         AddHostWindow.setObjectName("AddHostWindow")
         AddHostWindow.resize(350, 215)
         AddHostWindow.setMinimumSize(QtCore.QSize(350, 215))
         AddHostWindow.setMaximumSize(QtCore.QSize(350, 215))
+        AddHostWindow.close()
         self.addHostWidget = QtWidgets.QWidget(AddHostWindow)
         self.addHostWidget.setObjectName("addHostWidget")
         self.formLayoutWidget = QtWidgets.QWidget(self.addHostWidget)
@@ -60,7 +63,6 @@ class Ui_AddHostWindow(object):
         #Click event for cancelBtn.
         self.cancelBtn.clicked.connect(self.cancelAddHost)
         AddHostWindow.setCentralWidget(self.addHostWidget)
-
         self.retranslateUi(AddHostWindow)
         QtCore.QMetaObject.connectSlotsByName(AddHostWindow)
 
@@ -76,7 +78,6 @@ class Ui_AddHostWindow(object):
 
 
 #if __name__ == "__main__":
-    #import sys
     #app = QtWidgets.QApplication(sys.argv)
     #AddHostWindow = QtWidgets.QMainWindow()
     #ui = Ui_AddHostWindow()
