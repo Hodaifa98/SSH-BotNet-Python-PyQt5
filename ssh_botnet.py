@@ -7,21 +7,6 @@ from Design import ssh_window
 
 botNet = []
 
-class SSHBotNetApp:
-    def __init__(self):
-        #1: Create a builder
-        self.builder = builder = pygubu.Builder()
-
-        #2: Load an ui file
-        builder.add_from_file('ssh_botnet.ui')
-
-        #3: Create the mainwindow
-        self.mainwindow = builder.get_object('mainwindow')
-        
-    def run(self):
-        self.mainwindow.mainloop()
-
-
 class Client:
     #
     def __init__(self, host , user, password, port=22):
