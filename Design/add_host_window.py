@@ -71,11 +71,11 @@ class Ui_AddHostWindow(object):
         self.cancelBtn.setText(_translate("AddHostWindow", "Cancel"))
 
 
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    AddHostWindow = QtWidgets.QMainWindow()
-    ui = Ui_AddHostWindow()
-    ui.setupUi(AddHostWindow)
-    AddHostWindow.show()
-    sys.exit(app.exec_())
+#if __name__ == "__main__":
+    #import sys
+    #app = QtWidgets.QApplication(sys.argv)
+    #AddHostWindow = QtWidgets.QMainWindow()
+    #ui = Ui_AddHostWindow()
+    #ui.setupUi(AddHostWindow)
+    #AddHostWindow.show()
+    #sys.exit(app.exec_())
