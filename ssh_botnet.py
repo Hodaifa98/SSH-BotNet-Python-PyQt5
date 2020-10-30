@@ -1,7 +1,6 @@
 #Import required modules.
 import sys
 import paramiko
-from paramiko_expect import SSHClientInteraction
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QTableWidgetItem
 from Design.add_host_dialog import Ui_addHostDialog
@@ -32,12 +31,9 @@ class Client:
 
     #
     def send_command(self, command):
-        try:
-            interact = SSHClientInteraction(self.session, timeout=10, display=True)
-            interact.send(command)
-            return interact.current_output
-        except Exception as ex:
-            print(ex)
+        stdin, stdout, stderr = self.session.exec_command(command)
+        return stdout.readlines()
+        #print(stderr.readlines())
 
 
 def addClient(host, username, password, port=22):
@@ -171,8 +167,6 @@ class Ui_SSHBotNetWindow(object):
 
 #
 if __name__ == '__main__':
-    #addClient("127.0.0.1", "osboxes", "osboxes.org")
-    #sshbotnetCommand("ls")
     app = QtWidgets.QApplication(sys.argv)
     SSHBotNetWindow = QtWidgets.QMainWindow()
     ui = Ui_SSHBotNetWindow()
