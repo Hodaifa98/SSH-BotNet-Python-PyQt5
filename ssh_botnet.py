@@ -1,8 +1,8 @@
 #Import required modules.
-#from pexpect import pxsshS
+#from pexpect import pxssh
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtGui import QTableWidgetItem
+from PyQt5.QtWidgets import QTableWidgetItem
 from Design.add_host_dialog import Ui_addHostDialog
 
 #
