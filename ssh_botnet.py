@@ -143,6 +143,7 @@ class Client:
         except Exception as ex:
             print(ex)
 
+
 def addClient(self, host, user, password, port=22):
     client = Client(host, user, password, port)
     botNet_clients.append(client)
