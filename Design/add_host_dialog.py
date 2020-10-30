@@ -10,7 +10,8 @@ class HostObject:
 
 class Ui_addHostDialog(object):
     def getHostObj(self):
-        return self.hostObj
+        return self.hostObj()
+        
     def addHostBtnClick(self):
         try:
             host = self.hostInput.text()

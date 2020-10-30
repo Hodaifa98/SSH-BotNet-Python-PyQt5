@@ -9,9 +9,9 @@ botNet_clients = []
 
 class Client:
     #
-    def __init__(self, host , user, password, port=22):
+    def __init__(self, host, username, password, port=22):
         self.host = host
-        self.user = user
+        self.username = username
         self.password = password
         self.port = port
         self.session = self.connect()
@@ -20,7 +20,7 @@ class Client:
     def connect(self):
         try:
             s = pxssh.pxssh()
-            s.login(self.host, self.user, self.password, port=self.port)
+            s.login(self.host, self.username, self.password, port=self.port)
             return s
         except Exception as ex:
             print("Error connecting...")
@@ -36,8 +36,8 @@ class Client:
             print(ex)
 
 
-def addClient(self, host, user, password, port=22):
-    client = Client(host, user, password, port)
+def addClient(self, host, username, password, port=22):
+    client = Client(host, username, password, port)
     botNet_clients.append(client)
 
 def sshbotnetCommand(self, command):
@@ -54,7 +54,7 @@ class Ui_SSHBotNetWindow(object):
         dialog.exec_()
         if dialog.result() == dialog.Accepted:
             hostObj = dialog.ui.getHostObj()
-            print(hostObj.__dict__)
+            addClient(hostObj.host, hostObj.username, hostObj.password, hostObj.port)
 
     def setupUi(self, SSHBotNetWindow):
         SSHBotNetWindow.setObjectName("SSHBotNetWindow")
