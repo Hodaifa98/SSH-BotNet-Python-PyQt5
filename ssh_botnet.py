@@ -2,6 +2,7 @@
 #from pexpect import pxsshS
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtGui import QTableWidgetItem
 from Design.add_host_dialog import Ui_addHostDialog
 
 #
@@ -51,9 +52,9 @@ class Ui_SSHBotNetWindow(object):
         addClient(hostObj.host, hostObj.username, hostObj.password, hostObj.port)
         rowPosition = self.hostsTable.rowCount()
         self.hostsTable.insertRow(rowPosition)
-        self.hostsTable.setItem(rowPosition, 0, hostObj.host)
-        self.hostsTable.setItem(rowPosition, 1, hostObj.username)
-        self.hostsTable.setItem(rowPosition, 2, hostObj.port)
+        self.hostsTable.setItem(rowPosition, 0, QTableWidgetItem(hostObj.host))
+        self.hostsTable.setItem(rowPosition, 1, QTableWidgetItem(hostObj.username))
+        self.hostsTable.setItem(rowPosition, 2, QTableWidgetItem(hostObj.port))
 
     def openAddHostDialog(self):
         dialog = QtWidgets.QDialog()
