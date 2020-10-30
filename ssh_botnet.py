@@ -5,7 +5,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from Design.add_host_dialog import Ui_addHostDialog
 
 #
-botNet = []
+botNet_clients = []
 
 class Ui_SSHBotNetWindow(object):
     def openAddHostDialog(self):
@@ -143,17 +143,15 @@ class Client:
         except Exception as ex:
             print(ex)
 
-class BotNet():
-    def sshbotnetCommand(self, command):
-        for client in botNet:
-            output = client.send_command(command)
-            print("Output from " + client.host)
-            print(output)
+def addClient(self, host, user, password, port=22):
+    client = Client(host, user, password, port)
+    botNet_clients.append(client)
 
-    #
-    def addClient(self, host, user, password, port=22):
-        client = Client(host, user, password, port)
-        botNet.append(client)
+def sshbotnetCommand(self, command):
+    for client in botNet_clients:
+        output = client.send_command(command)
+        print("Output from " + client.host)
+        print(output)
 
 #
 if __name__ == '__main__':
