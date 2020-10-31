@@ -4,6 +4,7 @@ import threading
 import paramiko
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QTableWidgetItem
+from PyQt5.QtCore import Qt, QTimer
 from Design.add_host_dialog import Ui_addHostDialog
 
 #
