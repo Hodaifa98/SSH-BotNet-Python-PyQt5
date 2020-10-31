@@ -8,6 +8,7 @@ from Design.add_host_dialog import Ui_addHostDialog
 
 #
 botNet_clients = []
+host_threads = []
 
 class Client:
     #
@@ -17,7 +18,9 @@ class Client:
         self.password = password
         self.port = port
         try:
-            threading.Thread(target=self.connectToHost).start()
+            thread = threading.Thread(target=self.connectToHost)
+            host_threads.append(thread)
+            thread.start()
         except Exception as ex:
             print(ex)
 
