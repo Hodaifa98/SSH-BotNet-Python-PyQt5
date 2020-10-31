@@ -10,6 +10,7 @@ from Design.add_host_dialog import Ui_addHostDialog
 #
 botNet_clients = []
 host_threads = []
+btns = []
 
 class Client:
     #
@@ -43,6 +44,7 @@ class Client:
     #
     def send_command(self, command):
         try:
+            [btn for btn in btns]
             [thread.join() for thread in host_threads]
             stdin, stdout, stderr = self.session.exec_command(command)
             #print(stderr.readlines())
@@ -58,9 +60,6 @@ def addClient(host, username, password, port=22):
 
 def sshbotnetCommand(command):
     if len(botNet_clients) > 0:
-        lbl = QLabel("<font color=Green size=12><b>Hello</b></font>")
-        #lbl.setWindowFlags(Qt.SplashScreen | Qt.FramelessWindowHint)
-        lbl.show()
         for client in botNet_clients:
             output = client.send_command(command)
             print("Output from " + client.host)
@@ -128,18 +127,24 @@ class Ui_SSHBotNetWindow(object):
         self.addHostBtn.setObjectName("addHostBtn")
         #Click event for addHostBtn.
         self.addHostBtn.clicked.connect(self.openAddHostDialog)
+        #Adding addHostBtn to our btns list.
+        btns.append(self.addHostBtn)
         self.removeHostsBtn = QtWidgets.QPushButton(self.hostsWidget)
         self.removeHostsBtn.setGeometry(QtCore.QRect(10, 260, 91, 41))
         self.removeHostsBtn.setStyleSheet("background-color: rgb(213, 64, 98);\ncolor: rgb(255, 255, 255);")
         self.removeHostsBtn.setObjectName("removeHostsBtn")
         #Click event for removeHostsBtn.
         self.removeHostsBtn.clicked.connect(self.removeHostsBtnClick)
+        #Adding removeHostsBtn to our btns list.
+        btns.append(self.removeHostsBtn)
         self.executeBtn = QtWidgets.QPushButton(self.hostsWidget)
         self.executeBtn.setGeometry(QtCore.QRect(440, 260, 75, 23))
         self.executeBtn.setStyleSheet("background-color: rgb(0, 106, 113);\ncolor: rgb(255, 255, 255);")
         self.executeBtn.setObjectName("executeBtn")
         #Click event for executeBtn.
         self.executeBtn.clicked.connect(self.executeCommand)
+        #Adding executeBtn to our btns list.
+        btns.append(self.executeBtn)
         self.cmdToExecuteLabel = QtWidgets.QLabel(self.hostsWidget)
         self.cmdToExecuteLabel.setGeometry(QtCore.QRect(110, 230, 101, 71))
         font = QtGui.QFont()
