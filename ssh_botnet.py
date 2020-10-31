@@ -1,5 +1,6 @@
 #Import required modules.
 import sys
+import threading
 import paramiko
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QTableWidgetItem
@@ -15,6 +16,12 @@ class Client:
         self.username = username
         self.password = password
         self.port = port
+        try:
+            threading.Thread(target=self.connectToHost).start()
+        except Exception as ex:
+            print(ex)
+
+    def connectToHost(self):
         self.session = self.connect()
 
     #
