@@ -69,8 +69,13 @@ class Ui_SSHBotNetWindow(object):
             hostObj = dialog.ui.getHostObj()
             self.addHostToListAndRow(hostObj)
 
-    def removeHostBtn(self):
-        pass
+    def removeHostBtnClick(self):
+        try:
+            print("Hi")
+            indices = sorted(self.hostsTable.selectionModel().selectedRows())
+            [self.hostsTable.removeRow(x.row()) for x in indices]
+        except Exception as ex:
+            print(ex)
 
     def executeCommand(self):
         sshbotnetCommand(self.commandTextInput.toPlainText())
