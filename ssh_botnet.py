@@ -69,7 +69,7 @@ class Ui_SSHBotNetWindow(object):
             hostObj = dialog.ui.getHostObj()
             self.addHostToListAndRow(hostObj)
 
-    def removeHostBtnClick(self):
+    def removeHostsBtnClick(self):
         try:
             print("Hi")
             indices = sorted(self.hostsTable.selectionModel().selectedRows())
@@ -111,12 +111,12 @@ class Ui_SSHBotNetWindow(object):
         self.addHostBtn.setObjectName("addHostBtn")
         #Click event for addHostBtn.
         self.addHostBtn.clicked.connect(self.openAddHostDialog)
-        self.removeHostBtn = QtWidgets.QPushButton(self.hostsWidget)
-        self.removeHostBtn.setGeometry(QtCore.QRect(10, 260, 91, 41))
-        self.removeHostBtn.setStyleSheet("background-color: rgb(213, 64, 98);\ncolor: rgb(255, 255, 255);")
-        self.removeHostBtn.setObjectName("removeHostBtn")
-        #Click event for removeHostBtn.
-        self.removeHostBtn.clicked.connect(self.removeHostBtnClick)
+        self.removeHostsBtn = QtWidgets.QPushButton(self.hostsWidget)
+        self.removeHostsBtn.setGeometry(QtCore.QRect(10, 260, 91, 41))
+        self.removeHostsBtn.setStyleSheet("background-color: rgb(213, 64, 98);\ncolor: rgb(255, 255, 255);")
+        self.removeHostsBtn.setObjectName("removeHostsBtn")
+        #Click event for removeHostsBtn.
+        self.removeHostsBtn.clicked.connect(self.removeHostsBtnClick)
         self.executeBtn = QtWidgets.QPushButton(self.hostsWidget)
         self.executeBtn.setGeometry(QtCore.QRect(440, 260, 75, 23))
         self.executeBtn.setStyleSheet("background-color: rgb(0, 106, 113);\ncolor: rgb(255, 255, 255);")
@@ -169,7 +169,7 @@ class Ui_SSHBotNetWindow(object):
         item = self.hostsTable.horizontalHeaderItem(2)
         item.setText(_translate("SSHBotNetWindow", "Port"))
         self.addHostBtn.setText(_translate("SSHBotNetWindow", "Add a host"))
-        self.removeHostBtn.setText(_translate("SSHBotNetWindow", "Remove selected\nhost"))
+        self.removeHostsBtn.setText(_translate("SSHBotNetWindow", "Remove selected\nhosts"))
         self.executeBtn.setText(_translate("SSHBotNetWindow", "Execute"))
         self.cmdToExecuteLabel.setText(_translate("SSHBotNetWindow", "Command\nto execute"))
         self.menuMenu.setTitle(_translate("SSHBotNetWindow", "Menu"))
