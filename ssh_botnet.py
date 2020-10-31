@@ -44,7 +44,6 @@ class Client:
     #
     def send_command(self, command):
         try:
-            [btn for btn in btns]
             [thread.join() for thread in host_threads]
             stdin, stdout, stderr = self.session.exec_command(command)
             #print(stderr.readlines())
@@ -60,10 +59,12 @@ def addClient(host, username, password, port=22):
 
 def sshbotnetCommand(command):
     if len(botNet_clients) > 0:
+        [btn.setEnabled(False) for btn in btns]
         for client in botNet_clients:
             output = client.send_command(command)
             print("Output from " + client.host)
             print(output)
+        [btn.setEnabled(False) for btn in btns]
 
 class Ui_SSHBotNetWindow(object):
     def addHostToListAndRow(self, hostObj):
