@@ -69,7 +69,7 @@ class Ui_SSHBotNetWindow(object):
             hostObj = dialog.ui.getHostObj()
             self.addHostToListAndRow(hostObj)
 
-    def deleteSelectedRowBtnClick(self):
+    def removeHostBtn(self):
         pass
 
     def executeCommand(self):
@@ -110,6 +110,8 @@ class Ui_SSHBotNetWindow(object):
         self.removeHostBtn.setGeometry(QtCore.QRect(10, 260, 91, 41))
         self.removeHostBtn.setStyleSheet("background-color: rgb(213, 64, 98);\ncolor: rgb(255, 255, 255);")
         self.removeHostBtn.setObjectName("removeHostBtn")
+        #Click event for removeHostBtn.
+        self.removeHostBtn.clicked.connect(self.removeHostBtnClick)
         self.executeBtn = QtWidgets.QPushButton(self.hostsWidget)
         self.executeBtn.setGeometry(QtCore.QRect(440, 260, 75, 23))
         self.executeBtn.setStyleSheet("background-color: rgb(0, 106, 113);\ncolor: rgb(255, 255, 255);")
