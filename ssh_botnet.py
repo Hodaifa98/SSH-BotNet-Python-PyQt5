@@ -69,6 +69,9 @@ class Ui_SSHBotNetWindow(object):
             hostObj = dialog.ui.getHostObj()
             self.addHostToListAndRow(hostObj)
 
+    def deleteSelectedRowBtnClick(self):
+        pass
+
     def executeCommand(self):
         sshbotnetCommand(self.commandTextInput.toPlainText())
 
