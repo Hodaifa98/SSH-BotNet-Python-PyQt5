@@ -22,6 +22,9 @@ class Ui_addHostDialog(object):
         except Exception as ex:
             print(ex)
 
+    def deleteSelectedRowBtnClick(self):
+        pass
+
     def setupUi(self, addHostDialog):
         addHostDialog.setObjectName("addHostDialog")
         addHostDialog.resize(350, 170)
