@@ -64,7 +64,7 @@ def sshbotnetCommand(command):
             output = client.send_command(command)
             print("Output from " + client.host)
             print(output)
-        [btn.setEnabled(False) for btn in btns]
+        [btn.setEnabled(True) for btn in btns]
 
 class Ui_SSHBotNetWindow(object):
     def addHostToListAndRow(self, hostObj):
