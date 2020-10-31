@@ -42,6 +42,7 @@ class Client:
     #
     def send_command(self, command):
         try:
+            [thread.join() for thread in host_threads]
             stdin, stdout, stderr = self.session.exec_command(command)
             #print(stderr.readlines())
             return stdout.readlines()
