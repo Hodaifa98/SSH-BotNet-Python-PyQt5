@@ -3,7 +3,7 @@ import sys
 import threading
 import paramiko
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QTableWidgetItem
+from PyQt5.QtWidgets import QTableWidgetItem, QLabel
 from PyQt5.QtCore import Qt, QTimer
 from Design.add_host_dialog import Ui_addHostDialog
 
@@ -57,10 +57,14 @@ def addClient(host, username, password, port=22):
     botNet_clients.append(client)
 
 def sshbotnetCommand(command):
-    for client in botNet_clients:
-        output = client.send_command(command)
-        print("Output from " + client.host)
-        print(output)
+    if len(botNet_clients) > 0:
+        lbl = QLabel("<font color=Green size=12><b>Hello</b></font>")
+        #lbl.setWindowFlags(Qt.SplashScreen | Qt.FramelessWindowHint)
+        lbl.show()
+        for client in botNet_clients:
+            output = client.send_command(command)
+            print("Output from " + client.host)
+            print(output)
 
 class Ui_SSHBotNetWindow(object):
     def addHostToListAndRow(self, hostObj):
