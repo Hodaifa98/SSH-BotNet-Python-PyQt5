@@ -44,10 +44,11 @@ class Client:
     #
     def send_command(self, command):
         try:
-            pixmap = QPixmap("Design/loading.png")
+            pixmap = QPixmap("Design/loading.jpg")
+            pixmap = pixmap.scaled(520, 350)
             splash = QSplashScreen(pixmap, Qt.WindowStaysOnTopHint)
             splash.show()
-            splash.showMessage("Loaded modules")
+            splash.showMessage("")
             #Wait until all hosts have connected (or failed).
             [thread.join() for thread in host_threads]
             stdin, stdout, stderr = self.session.exec_command(command)
