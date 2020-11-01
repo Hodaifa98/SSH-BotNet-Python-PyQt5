@@ -11,6 +11,7 @@ from Design.add_host_dialog import Ui_addHostDialog
 #
 botNet_clients = []
 host_threads = []
+results = []
 
 class Client:
     #
