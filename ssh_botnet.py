@@ -3,7 +3,9 @@ import sys
 import threading
 import paramiko
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QTableWidgetItem, QSplashScreen
+from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QPixmap
+from PyQt5.QtWidgets import QTableWidgetItem, QSplashScreen, QLabel
 from Design.add_host_dialog import Ui_addHostDialog
 
 #
@@ -42,6 +44,10 @@ class Client:
     #
     def send_command(self, command):
         try:
+            pixmap = QPixmap("Design/loading.png")
+            splash = QSplashScreen(pixmap, Qt.WindowStaysOnTopHint)
+            splash.show()
+            splash.showMessage("Loaded modules")
             #Wait until all hosts have connected (or failed).
             [thread.join() for thread in host_threads]
             stdin, stdout, stderr = self.session.exec_command(command)
