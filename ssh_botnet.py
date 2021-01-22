@@ -69,7 +69,7 @@ def sshbotnetCommand(command):
         for client in botNet_clients:
             output = client.send_command(command)
             print("Output from " + client.host)
-            print(output)
+            #print(output)
 
 class Ui_SSHBotNetWindow(object):
     def addHostToListAndRow(self, hostObj):
@@ -129,7 +129,7 @@ class Ui_SSHBotNetWindow(object):
         self.hostsTable.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
         self.addHostBtn = QtWidgets.QPushButton(self.hostsWidget)
         self.addHostBtn.setGeometry(QtCore.QRect(10, 220, 91, 23))
-        self.addHostBtn.setStyleSheet("background-color: rgb(204, 246, 200);")
+        self.addHostBtn.setStyleSheet("background-color: rgb(166, 244, 198);")
         self.addHostBtn.setObjectName("addHostBtn")
         #Click event for addHostBtn.
         self.addHostBtn.clicked.connect(self.openAddHostDialog)
