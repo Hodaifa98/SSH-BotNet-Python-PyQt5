@@ -64,12 +64,13 @@ def addClient(host, username, password, port=22):
     botNet_clients.append(client)
 
 def sshbotnetCommand(command):
-    if len(botNet_clients) > 0:
+    if len(botNet_clients) > 0 and len(command) > 0:
         results = []
         for client in botNet_clients:
             output = client.send_command(command)
             results.append("Output from: " + client.host)
-            results.append(output)
+            for s in output:
+                results.append(s.split("\n")[0])
         return results
     else:
         return ""
@@ -104,7 +105,9 @@ class Ui_SSHBotNetWindow(object):
 
     def executeCommand(self):
         output = sshbotnetCommand(self.commandTextInput.toPlainText())
-        self.commandTextInput.setText("\n".join(output))
+        for s in output:
+            res = self.commandTextInput.toPlainText() + "\n" + s
+            self.commandTextInput.setText(res)
 
     def setupUi(self, SSHBotNetWindow):
         SSHBotNetWindow.setObjectName("SSHBotNetWindow")
