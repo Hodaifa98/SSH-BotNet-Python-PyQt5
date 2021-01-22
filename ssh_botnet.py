@@ -11,7 +11,6 @@ from Design.add_host_dialog import Ui_addHostDialog
 #
 botNet_clients = []
 host_threads = []
-results = []
 
 class Client:
     #
@@ -66,10 +65,14 @@ def addClient(host, username, password, port=22):
 
 def sshbotnetCommand(command):
     if len(botNet_clients) > 0:
+        results = []
         for client in botNet_clients:
             output = client.send_command(command)
-            print("Output from " + client.host)
-            #print(output)
+            results.append("Output from: " + client.host)
+            results.append(output)
+        return results
+    else:
+        return ""
 
 class Ui_SSHBotNetWindow(object):
     def addHostToListAndRow(self, hostObj):
@@ -100,7 +103,8 @@ class Ui_SSHBotNetWindow(object):
             print(ex)
 
     def executeCommand(self):
-        sshbotnetCommand(self.commandTextInput.toPlainText())
+        output = sshbotnetCommand(self.commandTextInput.toPlainText())
+        self.commandTextInput.setText("\n".join(output))
 
     def setupUi(self, SSHBotNetWindow):
         SSHBotNetWindow.setObjectName("SSHBotNetWindow")
